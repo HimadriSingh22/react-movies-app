@@ -2,6 +2,10 @@
     float:right;
 
 }
+.bookShow-button{
+ float:right;
+ margin-right:5px;
+}
 .app-header{
     background-color: black;
     height: 40px;

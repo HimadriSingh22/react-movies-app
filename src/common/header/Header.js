@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import './Header.css';
 import logo from '../../assests/logo.svg';
@@ -11,6 +12,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import PropTypes from 'prop-types';
 import FormHelpertext from '@material-ui/core/FormHelperText';
+import BookShow from '../../screens/bookshow/BookShow';
 const customStyles = {
     content: {
         top:'50%',
@@ -127,6 +129,10 @@ class Header extends Component
     inputContactChangeHandler=(e)=>{
         this.setState({contact:e.target.value})
     }
+    
+    bookShowHandler=()=>{
+     ReactDOM.render(<BookShow/>,document.getElementById('root'));
+    }
     render(){
         return(
             <div>
@@ -135,6 +141,11 @@ class Header extends Component
             <div className="login-btn">
                 <Button variant="contained" color="default" onClick={this.openModalHandler}>Login</Button>
             </div>
+            {this.props.showBookShowButton==="true"? 
+            <div className="bookShow-button">
+                <Button variant="contained" type="primary"  onClick={this.bookShowHandler} >Book Show</Button>
+            </div>:""}
+
             </header>
             <Modal 
             ariaHideApp={false} 
