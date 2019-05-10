@@ -17,6 +17,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import  InputLabel from '@material-ui/core/InputLabel';
 import { Button } from '@material-ui/core';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Confirmation from '../../screens/summary/Confirmation';
 class BookShow extends Component{
 
     constructor(){
@@ -56,12 +57,18 @@ class BookShow extends Component{
         this.setState({tickets:event.target.value});
     }
     bookShowButtonHandler = () => {
-        this.state.location === "" ? this.setState({ reqLocation: "dispBlock" }) : this.setState({ reqLocation: "dispNone" });
+        
+        if(this.state.location!=""&&this.state.language!=""&&this.state.showDate!=""&&this.state.showTime!=""&&this.state.tickets!="")
+        {ReactDOM.render(<Confirmation bookingSummary={this.state}/>,document.getElementById('root'));}
+        else{
+            this.state.location === "" ? this.setState({ reqLocation: "dispBlock" }) : this.setState({ reqLocation: "dispNone" });
         this.state.language === "" ? this.setState({ reqLanguage: "dispBlock" }) : this.setState({ reqLanguage: "dispNone" });
         this.state.showDate === "" ? this.setState({ reqShowDate: "dispBlock" }) : this.setState({ reqShowDate: "dispNone" });
         this.state.showTime === "" ? this.setState({ reqShowTime: "dispBlock" }) : this.setState({ reqShowTime: "dispNone" });
         this.state.tickets === 0 ? this.setState({ reqTickets: "dispBlock" }) : this.setState({ reqTickets: "dispNone" });
+        }
     }
+
     render(){
         return(
             <div>
