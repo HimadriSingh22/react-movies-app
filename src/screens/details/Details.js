@@ -89,7 +89,7 @@ class Details extends Component{
         <Header showBookShowButton="true"/>
         <div className="back">
         <Typography onClick={this.backtohomeHandler}>
-        Back to Home
+        &#60; Back to Home
         </Typography>
         </div>
         <div className="flex-containerDetails">
